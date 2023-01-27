@@ -37,6 +37,18 @@ function startPrompt() {
                     console.table(res)
                     if (err) throw err
                 })
+            } else if(answer.task == 'Add a Department') {
+                inquirer.prompt({
+                    type: 'input',
+                    message: 'What department would you like to add?',
+                    name: 'depName'
+                })
+                .then((answer) => {
+                    db.query(`INSERT INTO departments (department_name) VALUES ('${answer.depName}')`, function (err, res) {
+                        console.table(res)
+                        if (err) throw err
+                    })
+                })
             }
         
     })    
