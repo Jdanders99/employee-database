@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const consoleTable = require('console.table');
-const Connection = require("mysql2/typings/mysql/lib/Connection");
 const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection(
@@ -27,18 +26,21 @@ function startPrompt() {
                     console.table(res)
                     if (err) throw err
                 })
+                startPrompt();
         
             } else if(answer.task == 'View Roles') {
                 db.query('SELECT * FROM roles', function (err, res) {
                     console.table(res)
                     if (err) throw err
                 })
+                startPrompt();
             
             } else if(answer.task == 'View Employees') {
                 db.query('SELECT * FROM employees', function (err, res) {
                     console.table(res)
                     if (err) throw err
                 })
+                startPrompt();
             
             } else if(answer.task == 'Add a Department') {
                 inquirer.prompt({
@@ -50,8 +52,10 @@ function startPrompt() {
                     db.query(`INSERT INTO departments (department_name) VALUES ('${answer.depName}')`, function (err, res) {
                         console.table(res)
                         if (err) throw err
+                        startPrompt();
                     })
                 })
+                startPrompt();
             
             } else if(answer.task == 'Add a Role') {
                 inquirer.prompt({
@@ -75,6 +79,7 @@ function startPrompt() {
                         if (err) throw err
                     }
                 })
+                startPrompt();
             
             } else if(answer.task == 'Add an Employee') {
                 inquirer.prompt({

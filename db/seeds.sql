@@ -27,4 +27,4 @@ INSERT INTO employees (manager_id, roles_id, first_name, last_name)
     (null, 5, 'Mariah', 'Carey'),
     (3, 6, 'John', 'Deer'),
     (null, 7, 'Oliver', 'Queen'),
-    (4, 8, 'Lebron', 'James'),
+    (4, 8, 'Lebron', 'James');
