@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const consoleTable = require('console.table');
+const Connection = require("mysql2/typings/mysql/lib/Connection");
 const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection(
@@ -102,8 +103,14 @@ function startPrompt() {
                         if (err) throw err
                     }
                 })
+            } else if (answer == 'None') {
+                stopPrompt();
             }
     })    
 };
 
 startPrompt();
+
+function stopPrompt() {
+    Connection.end();
+};
