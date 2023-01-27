@@ -11,3 +11,13 @@ const db = mysql.createConnection(
     },
 );
 
+function startPrompt () {
+    inquirer.prompt({
+        type: 'list',
+        name: 'task',
+        message: 'What would you like to do?',
+        choices: ['View Departments', 'View Roles', 'View Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'None']
+    })
+}
+
+startPrompt();
