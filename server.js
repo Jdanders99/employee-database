@@ -25,22 +25,22 @@ function startPrompt() {
                 db.query('SELECT * FROM departments', function (err, res) {
                     console.table(res)
                     if (err) throw err
+                    startPrompt();
                 })
-                startPrompt();
         
             } else if(answer.task == 'View Roles') {
                 db.query('SELECT * FROM roles', function (err, res) {
                     console.table(res)
                     if (err) throw err
+                    startPrompt();
                 })
-                startPrompt();
             
             } else if(answer.task == 'View Employees') {
                 db.query('SELECT * FROM employees', function (err, res) {
                     console.table(res)
                     if (err) throw err
+                    startPrompt();
                 })
-                startPrompt();
             
             } else if(answer.task == 'Add a Department') {
                 inquirer.prompt({
@@ -55,7 +55,6 @@ function startPrompt() {
                         startPrompt();
                     })
                 })
-                startPrompt();
             
             } else if(answer.task == 'Add a Role') {
                 inquirer.prompt({
@@ -77,9 +76,9 @@ function startPrompt() {
                     db.query(`INSERT INTO roles (job_title, salary, departments_id) VALUES (${answer.newRole}, ${answer.newSalary}, ${answer.newDepId})`), function (err, res) {
                         console.table(res)
                         if (err) throw err
+                        startPrompt();
                     }
                 })
-                startPrompt();
             
             } else if(answer.task == 'Add an Employee') {
                 inquirer.prompt({
@@ -106,8 +105,9 @@ function startPrompt() {
                     db.query(`INSERT INTO employees (first_name, last_name, manager_id, roles_id) VALUES (${answer.firstName}, ${answer.lastName}, ${answer.empRole}, ${answer.empMan})`), function (err, res) {
                         console.table(res)
                         if (err) throw err
+                        startPrompt();
                     }
-                })
+                    })
             } else if (answer == 'None') {
                 stopPrompt();
             }
@@ -117,5 +117,5 @@ function startPrompt() {
 startPrompt();
 
 function stopPrompt() {
-    Connection.end();
+    connection.end();
 };
