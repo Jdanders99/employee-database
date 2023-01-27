@@ -32,11 +32,13 @@ function startPrompt() {
                     console.table(res)
                     if (err) throw err
                 })
+            
             } else if(answer.task == 'View Employees') {
                 db.query('SELECT * FROM employees', function (err, res) {
                     console.table(res)
                     if (err) throw err
                 })
+            
             } else if(answer.task == 'Add a Department') {
                 inquirer.prompt({
                     type: 'input',
@@ -48,6 +50,23 @@ function startPrompt() {
                         console.table(res)
                         if (err) throw err
                     })
+                })
+            
+            } else if(answer.task == 'Add a Role') {
+                inquirer.prompt({
+                    type: 'input',
+                    message: 'Enter new role:',
+                    name: 'newRole'
+                },
+                {
+                    type: 'input',
+                    message: 'What is expected salary?',
+                    name: 'newSalary'
+                },
+                {
+                    type: 'input',
+                    message: 'What is the Department ID?',
+                    name: 'newDepId'
                 })
             }
         
