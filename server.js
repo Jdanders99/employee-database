@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
+const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection(
     {
@@ -9,3 +10,4 @@ const db = mysql.createConnection(
         database:'employee_db'
     },
 );
+
