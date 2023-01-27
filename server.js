@@ -76,7 +76,26 @@ function startPrompt() {
                 })
             
             } else if(answer.task == 'Add an Employee') {
-                
+                inquirer.prompt({
+                    type: 'input',
+                    message: 'Enter employees first name.',
+                    name: 'firstName'
+                },
+                {
+                    type: 'input',
+                    message: 'Enter employees last name.',
+                    name: 'lastName'
+                },
+                {
+                    type: 'input',
+                    message: 'What is their role?',
+                    name: 'empRole'
+                },
+                {
+                    type: 'input',
+                    message: 'Who is their manager?',
+                    name: 'empMan'
+                })
             }
         
     })    
