@@ -93,11 +93,16 @@ function startPrompt() {
                 },
                 {
                     type: 'input',
-                    message: 'Who is their manager?',
+                    message: 'If manager, what is their ID?',
                     name: 'empMan'
                 })
+                .then((answer) => {
+                    db.query(`INSERT INTO employees (first_name, last_name, manager_id, roles_id) VALUES (${answer.firstName}, ${answer.lastName}, ${answer.empRole}, ${answer.empMan})`), function (err, res) {
+                        console.table(res)
+                        if (err) throw err
+                    }
+                })
             }
-        
     })    
 };
 
