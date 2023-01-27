@@ -68,6 +68,15 @@ function startPrompt() {
                     message: 'What is the Department ID?',
                     name: 'newDepId'
                 })
+                .then((answer) =>{
+                    db.query(`INSERT INTO roles (job_title, salary, departments_id) VALUES (${answer.newRole}, ${answer.newSalary}, ${answer.newDepId})`), function (err, res) {
+                        console.table(res)
+                        if (err) throw err
+                    }
+                })
+            
+            } else if(answer.task == 'Add an Employee') {
+                
             }
         
     })    
